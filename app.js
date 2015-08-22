@@ -28,6 +28,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var campaignController = require('./controllers/campaign');
 
 /**
  * API keys and Passport configuration.
@@ -109,6 +110,15 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
+
+/**
+ * Primary campaign routes.
+ */
+app.get('/campaign/new', campaignController.newCampaign);
+app.get('/campaigns', campaignController.allCampaigns);
+app.get('/campaign/:id', campaignController.getCampaign);
+app.post('/campaign/create', campaignController.createCampaign);
 
 /**
  * API examples routes.
