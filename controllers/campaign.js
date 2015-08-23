@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var Campaign = mongoose.model('Campaign');
+var Campaign = require('../models/Campaign');
+
 
 // GET /campaign/:id
 exports.getCampaign = function(req, res) {
@@ -45,5 +45,3 @@ exports.createCampaign = function(req, res) {
 	 	}
 	 })
 }
-
-
