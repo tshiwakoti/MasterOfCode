@@ -11,6 +11,8 @@ var campaignSchema = new mongoose.Schema({
 	exp_date: Date,
 	goal: Number, 
 	total_amount: Number,
-	donators: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 	_transactions: [{type: mongoose.Schema.ObjecteId, ref: 'Transaction'}]
-})//end campaignSchema
+});//end campaignSchema
+
+mongoose.model('Campaign', campaignSchema);
+
