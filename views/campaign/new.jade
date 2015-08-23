@@ -1,1 +1,15 @@
-p new campaign here
+extends ../layout
+
+block content
+  .container.make-it-editable
+    .row
+      h1.editable Title Here
+    .row
+      input.form-control.input-lg(type='text', placeholder='Image Link', name="image_url" )
+      br
+
+    .row
+      p.editable
+    
+    .col-md-4.pull-right
+      a.btn.btn-lg.btn-block.btn-default Submit

@@ -15,5 +15,6 @@
 
 //= require lib/jquery-2.1.3.min
 //= require lib/bootstrap.min
+//= require lib/medium-editor.min
 //= require lib/typed
 //= require main
