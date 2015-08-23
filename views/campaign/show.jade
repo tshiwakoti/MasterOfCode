@@ -1,8 +1,8 @@
 extends ../layout
 
 block content
- .col-md-12#cover.cover-20(style="background-image:url(../redcross.jpg);")
-   h1.text-center.upcase Donate for Red cross Society
+ .col-md-12#cover.cover-20(style="background-image:url(#{image_url});")
+   h1.text-center.upcase #{title}
    .col-md-8.col-md-offset-2
      .col-md-6
        a.btn.btn-block.btn-danger(href='/campaign/'+_id+'/donate')

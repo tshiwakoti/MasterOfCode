@@ -6,14 +6,11 @@ var Simplify 		= require('simplify-commerce'),
 
 // GET /campaign/:id
 exports.getCampaign = function(req, res) {
-	console.log("GET CAMPAING \n", req.params);
   Campaign.findOne({_id: req.params.id}).populate('_transactions').exec(function(err, campaign_detail){
   	if(err){
   		console.log(err);
   	}else{
   		Campaign.populate(campaign_detail, {path: '_transactions._user', model:'Campaign'}, function(err, users){
-  
-  			console.log('Got users', campaign_detail);
   			res.render('campaign/show', campaign_detail);
   		})
   	}
@@ -33,17 +30,21 @@ exports.allCampaigns = function(req, res) {
 
 // GET /campaign/new
 exports.newCampaign = function(req, res) {
-	console.log('RENDERING THE NEW PAGE');
-  res.render('campaign/new', {
-    title: 'New Campaign'
-  })
+	if (res.locals.user == undefined) {
+		res.render('account/login');
+	}
+	else {
+	  res.render('campaign/new', {
+	    title: 'New Campaign'
+	  })
+	}
 }
 
 // POST /campaign/create
 exports.createCampaign = function(req, res) {
-	console.log('is it going here like twice or something');
 	var new_campaign = new Campaign(req.body);
-	 new_campaign.save(function(err, campaign){
+	new_campaign._admin_user = req.user;
+	new_campaign.save(function(err, campaign){
 	 	if(err){
 	 		console.log('Error adding new campaign');
 	 	}else{
@@ -97,9 +98,7 @@ exports.createDonation = function(req, res) {
     	req.flash('success', { msg: "Payment Status: " + data.paymentStatus });
 	    return res.redirect('/campaign/'+req.params.id);
     }
+	    console.log('this is data: \n\n', data);
+
 	});
 }
-
-
-
-// }

@@ -11,8 +11,8 @@
         | Master of Donation
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=title=='Home'?'active':undefined)
-          a(href='/') Home
+        //- li(class=title=='Home'?'active':undefined)
+          //- a(href='/') Home
         //- li(class=title=='API Examples'?'active':undefined)
           //- a(href='/api') API Examples
         //- li(class=title=='Contact'?'active':undefined)
@@ -35,6 +35,9 @@
             ul.dropdown-menu
               li
                 a(href='/account') My Account
+              li.divider
+              li
+                a(href='/campaign/new') New Campaign
               li.divider
               li
                 a(href='/logout') Logout
