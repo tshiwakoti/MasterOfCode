@@ -11,7 +11,7 @@ exports.getCampaign = function(req, res) {
   		console.log(err);
   	}else{
   		Campaign.populate(campaign_detail, {path: '_transactions._user', model:'Campaign'}, function(err, users){
-  			console.log('Got users', campaign_detail);
+  			console.log('Got campaign', campaign_detail);
   			res.render('campaign/show', campaign_detail);
   		})
   	}
@@ -98,6 +98,10 @@ exports.createDonation = function(req, res) {
     } else {
 
 	    console.log("Payment Status: " + data.paymentStatus);
+
     }
+	    console.log('this is data: \n\n', data);
+
 	});
+
 }
