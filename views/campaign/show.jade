@@ -1,6 +1,8 @@
 extends ../layout
 
 block content
+ script(src='//static.addtoany.com/menu/page.js')
+ 
  .col-md-12#cover.cover-20(style="background-image:url(#{image_url});")
    h1.text-center.upcase #{title}
    .col-md-8.col-md-offset-2
@@ -9,7 +11,7 @@ block content
          i.fa.fa-cc-mastercard
          | Donate with Master Card
      .col-md-6
-       a.btn.btn-block.btn-primary(href='/')
+       a.btn.btn-block.btn-primary.a2a_dd(href='https://www.addtoany.com/share_save')
          i.fa.fa-share
          | Share with your Friends
  .container
