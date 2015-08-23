@@ -6,6 +6,7 @@ var Simplify 		= require('simplify-commerce'),
 
 // GET /campaign/:id
 exports.getCampaign = function(req, res) {
+	console.log("GET CAMPAING");
   Campaign.find({_id: req.body.id}).populate('_transactions').exec(function(err, campaign_detail){
   	if(err){
   		console.log(err);
@@ -31,6 +32,7 @@ exports.allCampaigns = function(req, res) {
 
 // GET /campaign/new
 exports.newCampaign = function(req, res) {
+	console.log('RENDERING THE NEW PAGE');
   res.render('campaign/new', {
     title: 'New Campaign'
   })
@@ -38,13 +40,14 @@ exports.newCampaign = function(req, res) {
 
 // POST /campaign/create
 exports.createCampaign = function(req, res) {
+	console.log('is it going here like twice or something');
 	var new_campaign = new Campaign(req.body);
 	 new_campaign.save(function(err, campaign){
 	 	if(err){
 	 		console.log('Error adding new campaign');
 	 	}else{
 	 		console.log('Added a new campaign with id ' + campaign._id);
-	 		res.redirect('campaign/create/' + campaign._id);
+	 		res.redirect(campaign._id);
 	 	}
 	})
 }
