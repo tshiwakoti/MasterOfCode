@@ -5,10 +5,20 @@ block content
 		.col-md-6.col-md-offset-3
 			.panel.panel-default
 				.panel-body
+					.wells
+						h4.text-center Test CC
+						p Card Number : 5555555555554444
+						p Expiry: 11/2019
+						p CVC: 123
+						hr
+
+					h3.text-center Donate for #{campaign.title}
 					.card-wrapper
 
 					form.donate-form.form-horizontal(action="/campaign/#{campaign.id}/donate", method="post")
+
 						.form-group
+							input(type = 'hidden' name = 'campaign_id' value = '#{campaign.id}')
 							label.col-lg-2.control-label(for='credit_card') Credit Card
 							.col-lg-10
 								input#credit_card.form-control(type='text', placeholder='5500 0000 0000 0004', name='number')
@@ -25,10 +35,10 @@ block content
 							.col-sm-5
 								input#cvc-number.form-control(type='text', placeholder='123', name='cvc')
 						.form-group
-							label.col-lg-2.control-label(for='amount', name='amount') Amount
+							label.col-lg-2.control-label(for='amount', name='amount') Amount $
 							.col-lg-10
-								input#amount.form-control(type='text', placeholder='$ 100')
-						
+								input#amount.form-control(type='text', placeholder='100', name='amount')
+							
 						.form-group
 							.col-lg-10.col-lg-offset-2
 								button.btn.btn-primary.btn-block.upcase(type='submit') Donate Now

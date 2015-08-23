@@ -1,18 +1,17 @@
 extends ../layout
 
 block content
-  .col-md-12#cover.cover-20(style="background-image:url(#{image_url})")
-    h1.text-center.upcase #{title}
-    .col-md-8.col-md-offset-2
-      .col-md-6
-        a.btn.btn-block.btn-danger(href='/campaign/'+_id+'/donate')
-          i.fa.fa-cc-mastercard
-          | Donate with Master Card
-      .col-md-6
-        a.btn.btn-block.btn-primary(href='/')
-          i.fa.fa-share
-          | Share with your Friends
-  .container
-    .row
-      p. 
-        #{description}
+ .col-md-12#cover.cover-20(style="background-image:url(#{image_url});")
+   h1.text-center.upcase #{title}
+   .col-md-8.col-md-offset-2
+     .col-md-6
+       a.btn.btn-block.btn-danger(href='/campaign/'+_id+'/donate')
+         i.fa.fa-cc-mastercard
+         | Donate with Master Card
+     .col-md-6
+       a.btn.btn-block.btn-primary(href='/')
+         i.fa.fa-share
+         | Share with your Friends
+ .container
+   .row
+     p.content #{description}
