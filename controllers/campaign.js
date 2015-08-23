@@ -12,6 +12,7 @@ exports.getCampaign = function(req, res) {
   		console.log(err);
   	}else{
   		Campaign.populate(campaign_detail, {path: '_transactions._user', model:'Campaign'}, function(err, users){
+  
   			console.log('Got users', campaign_detail);
   			res.render('campaign/show', campaign_detail);
   		})
@@ -67,34 +68,38 @@ exports.newDonationForm = function(req,res){
 
 // POST /campaign/:id/donate
 exports.createDonation = function(req, res) {
-	console.log(req.params)
 	var donation = req.body
 	var splitDate = donation.expiry.split(' / ')
-	console.log(req.body)
 
 	client = Simplify.getClient({
-    publicKey: secrets.simplify.public_key,
-    privateKey: secrets.simplify.private_key
+  	publicKey: secrets.simplify.public_key,
+  	privateKey: secrets.simplify.private_key
 	});
-
 
 	client.payment.create({
     amount : donation.amount,
-    description : "payment description",
+    description : "Donation",
     card : {
        expMonth : splitDate[0],
-       expYear : splitDate[1],
+       expYear : splitDate[1].slice(-2),
        cvc : donation.cvc,
        number : donation.number.split(' ').join('')
     },
     currency : "USD"
 	}, function(errData, data){
     if(errData){
+    	backURL=req.header('Referer') || '/'
       console.error("Error Message: " + errData.data.error.message);
-      return;
+    	req.flash('error', { msg: errData.data.error.message });
+      return res.redirect(backURL);
     } else {
-
 	    console.log("Payment Status: " + data.paymentStatus);
+    	req.flash('success', { msg: "Payment Status: " + data.paymentStatus });
+	    return res.redirect('/campaign/'+req.params.id);
     }
 	});
 }
+
+
+
+// }
