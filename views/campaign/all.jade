@@ -1,1 +1,23 @@
-p All campaigns homes
+extends ../layout
+
+block content
+  .container
+    br
+    br
+    h2.text-center All Campaigns
+    br
+    .row.all-campaigns
+      for campaign in campaigns
+        .col-xs-18.col-sm-6.col-md-3
+          .thumbnail
+            img(src='#{campaign.image_url}', alt='')
+            hr
+            .caption
+              h4.truncate #{campaign.title}
+              p.truncate
+                | #{campaign.description}
+              p
+                a.btn.btn-danger.btn-xs(href='/campaign/#{campaign.id}', role='button') Donate
+
+              script.
+                $('.truncate').truncate()
