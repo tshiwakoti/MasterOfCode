@@ -15,7 +15,6 @@ exports.getCampaign = function(req, res) {
   })
 };
 
-
 // GET /campaigns
 exports.allCampaigns = function(req, res) {
 	Campaign.find({}, function(err, all_campaigns){
