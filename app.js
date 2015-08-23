@@ -121,8 +121,7 @@ app.post('/campaign/:id/donate', campaignController.createDonation);
 app.get('/campaign/new', campaignController.newCampaign);
 app.get('/campaigns', campaignController.allCampaigns);
 app.get('/campaign/:id', campaignController.getCampaign);
-app.post('/campaign/donate', campaignController.createCampaign);
-
+app.post('/campaign/create', campaignController.createCampaign);
 /**
  * API examples routes.
  */
