@@ -1,17 +1,34 @@
 extends ../layout
-
+script.
+      $(function() {
+      $( "#datepicker" ).datepicker();
+      });
 block content
   .container.make-it-editable
-    form(action="/campaign/create", method="post")
-      .row
-        input.editor.title(type='text', name="title" placeholder='Input here')
-        br
-      .row
+    form.col-lg-10(action="/campaign/create", method="post")
+      .form-group
+        input.editor.title(type='text', name="title",placeholder='Title')
+      .form-group
         input.editor.image-link(type='text', placeholder='Image Link', name="image_url" )
+      .form-group
+        p Description
+        textarea.form-control.editor.editor-textarea(rows="8" name='description', placeholder = 'Description')
         br
+      .form-group
+        .col-md-4
+          p Exp Date
+        .col-md-4
+          p(style = 'margin-left: 15px') Goal
+        .col-md-4
+          p(style = 'margin-left: 15px') Min
+      .form-group
+        .col-md-4
+          input.editor.exp_date(type = 'date', name = 'exp_date', placeholder = 'MM/DD/YYYY', id = '#datepicker' style = 'margin-left: -15px;color:silver; padding-left: 15px;') 
+        .col-md-4
+          input.editor.goal(type = 'text', name = 'goal', placeholder = 'Goal' style = 'padding:15px') 
+        .col-md-4
+          input.editor.min(type = 'text', name = 'min', placeholder = 'Donation Minimum' style = 'padding:15px')
+          br 
       .row
-        textarea.form-control.editor.editor-textarea(rows="8" name='description')
-        br
-        br
-      .col-md-4.pull-right
-        button.btn.btn-lg.btn-block.btn-default(type="submit") Submit
+        .col-md-4.pull-right
+          button.btn.btn-lg.btn-block.btn-default(type="submit") Submit
