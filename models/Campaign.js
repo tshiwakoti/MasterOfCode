@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var campaignSchema = new mongoose.Schema({
 	title: String,
+	image_url: String,
 	description: String,
 	location: String,
 	created_at: {type: Date, default: Date.now},
