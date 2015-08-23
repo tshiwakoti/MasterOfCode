@@ -40,6 +40,11 @@ module.exports = {
     password: process.env.SENDGRID_PASSWORD || 'hspassword00'
   },
 
+  simplify: {
+    public_key: 'sbpb_NzVlM2JjNTItNmNjOC00NjkzLWEyMzQtZGUyMjY3YzFkMWQy',
+    private_key: 'WCcOPl54DZsFDw+LnyoFYdP5j+8u2FvIWsXR8GK1F+d5YFFQL0ODSXAOkNtXTToq'
+  },
+
   nyt: {
     key: process.env.NYT_KEY || '9548be6f3a64163d23e1539f067fcabd:5:68537648'
   },

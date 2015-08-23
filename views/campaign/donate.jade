@@ -7,7 +7,7 @@ block content
 				.panel-body
 					.card-wrapper
 
-					form.donate-form.form-horizontal(action="/campaign/:id/create", method="post")
+					form.donate-form.form-horizontal(action="/campaign/#{campaign.id}/donate", method="post")
 						.form-group
 							label.col-lg-2.control-label(for='credit_card') Credit Card
 							.col-lg-10
@@ -25,7 +25,7 @@ block content
 							.col-sm-5
 								input#cvc-number.form-control(type='text', placeholder='123', name='cvc')
 						.form-group
-							label.col-lg-2.control-label(for='amount') Amount
+							label.col-lg-2.control-label(for='amount', name='amount') Amount
 							.col-lg-10
 								input#amount.form-control(type='text', placeholder='$ 100')
 						
