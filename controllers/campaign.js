@@ -1,4 +1,7 @@
-var Campaign = require('../models/Campaign');
+var Simplify 		= require('simplify-commerce'),
+		Campaign 		= require('../models/Campaign'),
+		Transaction = require('../models/Transaction'),
+		secrets 		= require('../config/secrets.js')
 
 
 // GET /campaign/:id
@@ -47,34 +50,48 @@ exports.createCampaign = function(req, res) {
 }
 
 
-// GET /campaign/:id/donate
+// GET /campaign/:campaign_id/donate
 exports.newDonationForm = function(req,res){
-	res.render('campaign/donate');
+	Campaign.findOne({ 
+		_id: req.params.campaign_id 
+	}, function(err, result) {
+		if (err) return console.error(err);
+		console.log(result)
+		res.render('campaign/donate', { campaign: result });
+	})
+
 }
 
 // POST /campaign/:id/donate
 exports.createDonation = function(req, res) {
-	// var Simplify = require("simplify-commerce"),
-	// client = Simplify.getClient({
-	//     publicKey: 'YOUR_PUBLIC_API_KEY',
-	//     privateKey: 'YOUR_PRIVATE_API_KEY'
-	// });
-	// client.payment.create({
-	//     amount : "123123",
-	//     description : "payment description",
-	//     card : {
-	//        expMonth : "11",
-	//        expYear : "19",
-	//        cvc : "123",
-	//        number : "5555555555554444"
-	//     },
-	//     currency : "USD"
-	// }, function(errData, data){
-	//     if(errData){
-	//         console.error("Error Message: " + errData.data.error.message);
-	//         // handle the error
-	//         return;
-	//     }
-	//     console.log("Payment Status: " + data.paymentStatus);
-	// });
+	console.log(req.params)
+	var donation = req.body
+	var splitDate = donation.expiry.split(' / ')
+	console.log(req.body)
+
+	client = Simplify.getClient({
+    publicKey: secrets.simplify.public_key,
+    privateKey: secrets.simplify.private_key
+	});
+
+
+	client.payment.create({
+    amount : donation.amount,
+    description : "payment description",
+    card : {
+       expMonth : splitDate[0],
+       expYear : splitDate[1],
+       cvc : donation.cvc,
+       number : donation.number.split(' ').join('')
+    },
+    currency : "USD"
+	}, function(errData, data){
+    if(errData){
+      console.error("Error Message: " + errData.data.error.message);
+      return;
+    } else {
+
+	    console.log("Payment Status: " + data.paymentStatus);
+    }
+	});
 }
