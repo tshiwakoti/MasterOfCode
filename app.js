@@ -115,6 +115,9 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 /**
  * Primary campaign routes.
  */
+app.get('/campaign/:id/donate', campaignController.newDonationForm);
+app.post('/campaign/:id/donate', campaignController.createDonation);
+
 app.get('/campaign/new', campaignController.newCampaign);
 app.get('/campaigns', campaignController.allCampaigns);
 app.get('/campaign/:id', campaignController.getCampaign);
