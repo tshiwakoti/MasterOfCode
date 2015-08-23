@@ -4,15 +4,14 @@ block content
   .container.make-it-editable
     form(action="/campaign/create", method="post")
       .row
-        input.editor.title(placeholder='Input here')
+        input.editor.title(type='text', name="title" placeholder='Input here')
         br
       .row
         input.editor.image-link(type='text', placeholder='Image Link', name="image_url" )
         br
       .row
-        textarea.form-control.editor.editor-textarea(rows="8")
+        textarea.form-control.editor.editor-textarea(rows="8" name='description')
         br
         br
-      
       .col-md-4.pull-right
         button.btn.btn-lg.btn-block.btn-default(type="submit") Submit

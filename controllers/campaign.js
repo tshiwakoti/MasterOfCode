@@ -41,7 +41,7 @@ exports.createCampaign = function(req, res) {
 	 		console.log('Error adding new campaign');
 	 	}else{
 	 		console.log('Added a new campaign with id ' + campaign._id);
-	 		res.redirect('campaign/' + campaign._id);
+	 		res.redirect('campaign/create/' + campaign._id);
 	 	}
-	 })
+	})
 }
