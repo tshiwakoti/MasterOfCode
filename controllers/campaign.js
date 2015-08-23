@@ -23,7 +23,7 @@ exports.allCampaigns = function(req, res) {
 		if(err){
 			console.log('Error getting all campaigns');
 		}else{
-			res.render('campaign/all', all_campaigns);
+			res.render('campaign/all', {campaigns: all_campaigns});
 		}
 	})
 }
@@ -57,8 +57,8 @@ exports.createCampaign = function(req, res) {
 
 // GET /campaign/:campaign_id/donate
 exports.newDonationForm = function(req,res){
-	Campaign.findOne({ 
-		_id: req.params.campaign_id 
+	Campaign.findOne({
+		_id: req.params.campaign_id
 	}, function(err, result) {
 		if (err) return console.error(err);
 		console.log(result)

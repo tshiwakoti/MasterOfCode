@@ -18,4 +18,5 @@
 //= require lib/medium-editor.min
 //= require lib/card
 //= require lib/typed
+//= require lib/truncate
 //= require main

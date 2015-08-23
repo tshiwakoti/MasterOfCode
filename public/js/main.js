@@ -4,6 +4,7 @@ $(document).ready(function() {
     loop: true,
     typeSpeed: 70
   });
+  
 
   // card.js
   var card = new Card({

@@ -10,3 +10,23 @@ block content
         a.btn-cta.btn-white.pull-right(href="/campaign/new") Create a Campaign
       .col-md-6
         a.btn-cta.btn-white.pull-left(href="/campaigns") Join a Campaign
+
+  .container
+    br
+    br
+    h2.text-center Recent Campaigns
+    .row.all-campaigns
+      for campaign in campaigns
+        .col-xs-18.col-sm-6.col-md-3
+          .thumbnail
+            img(src='#{campaign.image_url}', alt='')
+            hr
+            .caption
+              h4.truncate #{campaign.title}
+              p.truncate
+                | #{campaign.description}
+              p
+                a.btn.btn-danger.btn-xs(href='/campaign/#{campaign.id}', role='button') Donate
+
+  script.
+    $('.truncate').truncate()
