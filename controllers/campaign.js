@@ -45,3 +45,36 @@ exports.createCampaign = function(req, res) {
 	 	}
 	 })
 }
+
+
+// GET /campaign/:id/donate
+exports.newDonationForm = function(req,res){
+	res.render('campaign/donate');
+}
+
+// POST /campaign/:id/donate
+exports.createDonation = function(req, res) {
+	// var Simplify = require("simplify-commerce"),
+	// client = Simplify.getClient({
+	//     publicKey: 'YOUR_PUBLIC_API_KEY',
+	//     privateKey: 'YOUR_PRIVATE_API_KEY'
+	// });
+	// client.payment.create({
+	//     amount : "123123",
+	//     description : "payment description",
+	//     card : {
+	//        expMonth : "11",
+	//        expYear : "19",
+	//        cvc : "123",
+	//        number : "5555555555554444"
+	//     },
+	//     currency : "USD"
+	// }, function(errData, data){
+	//     if(errData){
+	//         console.error("Error Message: " + errData.data.error.message);
+	//         // handle the error
+	//         return;
+	//     }
+	//     console.log("Payment Status: " + data.paymentStatus);
+	// });
+}

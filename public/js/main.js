@@ -4,10 +4,14 @@ $(document).ready(function() {
     loop: true,
     typeSpeed: 70
   });
-  
-  var editor = new MediumEditor('.editable', {
-    placeholder: false
-  });
-  
-  // editor = new MediumEditor(elements);
+
+  // card.js
+  var card = new Card({
+    form: 'form.donate-form',
+    container: '.card-wrapper',
+
+    formSelectors: {
+        nameInput: 'input[name="first-name"], input[name="last-name"]'
+    }
+	});
 });
