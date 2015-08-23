@@ -6,13 +6,13 @@ var Simplify 		= require('simplify-commerce'),
 
 // GET /campaign/:id
 exports.getCampaign = function(req, res) {
-	console.log("GET CAMPAING");
-  Campaign.find({_id: req.body.id}).populate('_transactions').exec(function(err, campaign_detail){
+	console.log("GET CAMPAING \n", req.params);
+  Campaign.findOne({_id: req.params.id}).populate('_transactions').exec(function(err, campaign_detail){
   	if(err){
   		console.log(err);
   	}else{
   		Campaign.populate(campaign_detail, {path: '_transactions._user', model:'Campaign'}, function(err, users){
-  			console.log('Got users');
+  			console.log('Got users', campaign_detail);
   			res.render('campaign/show', campaign_detail);
   		})
   	}
