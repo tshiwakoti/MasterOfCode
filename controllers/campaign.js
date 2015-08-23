@@ -10,9 +10,7 @@ exports.getCampaign = function(req, res) {
   	if(err){
   		console.log(err);
   	}else{
-  		Campaign.populate(campaign_detail, {path: '_transactions._user', model:'Campaign'}, function(err, users){
-  			res.render('campaign/show', campaign_detail);
-  		})
+			res.render('campaign/show', {campaign: campaign_detail});
   	}
   })
 };

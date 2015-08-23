@@ -1,8 +1,27 @@
-[{
-  "email": "puru@dahal.me",
-  "password": "password"
-},
-{
-  "email": "abi@shiwakoti.com",
-  "password": "password"
-}]
+[
+  {
+    "name": "Puru Dahal",
+    "email": "puru@dahal.me",
+    "password": "password"
+  },
+  {
+    "name": "Tej shiwakoti",
+    "email": "tshiwakoti@outlook.com",
+    "password": "password"
+  },
+  {
+    "name": "Anthony Nguyen",
+    "email": "a.th.nguyen30@gmail.com",
+    "password": "Password"
+  },
+  {
+    "name": "Anthony Do",
+    "email": "anthony@medicyne.com",
+    "password": "password"
+  },
+  {
+    "name": "Jennifer Kim",
+    "email": "jenniferxkim@gmail.com",
+    "password": "password"
+  }
+]

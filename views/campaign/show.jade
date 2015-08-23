@@ -3,11 +3,11 @@ extends ../layout
 block content
  script(src='//static.addtoany.com/menu/page.js')
  
- .col-md-12#cover.cover-20(style="background-image:url(#{image_url});")
-   h1.text-center.upcase #{title}
+ .col-md-12#cover.cover-20(style="background-image:url(#{campaign.image_url});")
+   h1.text-center.upcase #{campaign.title}
    .col-md-8.col-md-offset-2
      .col-md-6
-       a.btn.btn-block.btn-danger(href='/campaign/'+_id+'/donate')
+       a.btn.btn-block.btn-danger(href='/campaign/'+ campaign._id +'/donate')
          i.fa.fa-cc-mastercard
          | Donate with Master Card
      .col-md-6
@@ -15,5 +15,35 @@ block content
          i.fa.fa-share
          | Share with your Friends
  .container
-   .row
-     p.content #{description}
+    .row
+      p.content #{campaign.description}
+
+    .row
+      hr
+      h2.text-center Donors
+      hr
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th Name
+            th Date
+        tbody
+          tr
+            td Anthony Nguyen
+            td August 23, 2015
+            
+          tr
+            td Tej Shiwakoti
+            td August 23, 2015
+            
+          tr
+            td Jennifer Kim
+            td August 23, 2015
+            
+          tr
+            td Anthony Do
+            td August 23, 2015
+
+          tr
+            td Puru Dahal
+            td August 23, 2015
